@@ -58,7 +58,7 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m) {
 			break;
 			
 		case 2:
-
+			 
 			cout << "Which medicine would you like to delete?";
 			cin >> name;
 			cout << "Concentration?";
