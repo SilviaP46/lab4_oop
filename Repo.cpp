@@ -7,7 +7,7 @@
 using namespace std;
 
 
-vector<Medikament>c;
+
 Repo::Repo() {}
 
 bool Repo::add_Medikament(Medikament m) {
@@ -40,17 +40,18 @@ void Repo::update_Medikament(string name, float concentration,int p) {
 		}
 	}
 }
+
+
 void Repo::Group()//group Medikament by price
 {
-	vector<Medikament>v;
-	pair<double, string>p;
-	vector<string>name = {};
-	vector<double>price = {};
+	
+
 
 	//create 2 vectors and memorize the name and the price of each one
 	Medikament temp;
-	ifstream in("medikament.txt", ios::in);
+	ifstream in("medicament.txt", ios::in);
 	while (in >> temp.get_Name >> temp.get_Concentration >> temp.get_Price >> temp.get_Quantity)
+
 		v.push_back(temp);//create a vector
 	int k = 0;
 	for (const auto& it : v)
@@ -95,10 +96,10 @@ void Repo::Group()//group Medikament by price
 	}
 }
 
-void Repo::RUndo()//functie ajutatoare pt Undo
+void Repo::RUndo()//help function for Undo
 {
 	Medikament temp;
-	ifstream in("medikament.txt", ios::in);
+	ifstream in("medicament.txt", ios::in);
 	while (in >> temp.get_Name >> temp.get_Concentration >> temp.get_Price >> temp.get_Quantity)
 		c.push_back(temp);//create a vektor
 }
@@ -107,12 +108,12 @@ void Repo::Undo()
 {
 	vector<Medikament>g;
 	g = c;
-	ofstream trunc("medikament.txt", ios::out);
+	ofstream trunc("medicament.txt", ios::out);
 	for (const auto& medi : g)
 	{
-		trunc << medi.get_Name << ' ' << medi.get_Concentration << ' ' << medi.get_Price << ' ' << medi.get_Quantity << ' ' << endl;
+		trunc << medi.get_Name()<< ' ' << medi.get_Concentration() << ' ' << medi.get_Price() << ' ' << medi.get_Quantity() << ' ' << endl;
 	}
-	cout << "Undo/Redo was mad..." << endl;
+	cout << "Undo/Redo was mad...search in the folder for verification" << endl;
 	c = {};
 }
 

@@ -7,7 +7,8 @@ using namespace std;
 
 Controller::Controller(){}
 
-void Controller::ui_menu(int choice, Repo* r, Medikament m) {
+void Controller::ui_menu(int choice, Repo* r, Medikament m) 
+{
 
 	Medikament* med;
 	int quantity, op = choice, price_reduc;
@@ -16,13 +17,13 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m) {
 	bool exit = false;
 
 
-	while (exit!=true) {
-		
+	while (exit != true) 
+	{
 		switch (op)
-			
 		{
+		
 		case 0:
-			
+
 			cout << "Bye Bye!";
 			exit = true;
 			system("PAUSE");
@@ -56,9 +57,9 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m) {
 
 			system("PAUSE");
 			break;
-			
+
 		case 2:
-			 
+
 			cout << "Which medicine would you like to delete?";
 			cin >> name;
 			cout << "Concentration?";
@@ -90,7 +91,8 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m) {
 			break;
 		case 5:
 			//ne trebuie un fisier de ex medicamente.txt,deoarece am functie de undo si redo,care cred ca necesita un fisier
-			
+
+
 		}
 	}
 }

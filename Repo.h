@@ -8,6 +8,11 @@ class Repo{
 	friend class Medikament;
 	public:
 	vector<Medikament> medicine;
+	vector<Medikament> v;
+	pair<double, string> p;
+	vector<string> name = {};
+	vector<double> price = {};
+	vector<Medikament> c;
 
 	
 public:
@@ -19,11 +24,7 @@ public:
 	void Group();
 	void RUndo();
 	void Undo();
-	string get_Name();
-	int get_Concentration();
-	int get_Price();
-	int get_Quantity();
-	//nu stiu daca trebuie adugate astea de mai sus?P:)))
+	
 
 };
 

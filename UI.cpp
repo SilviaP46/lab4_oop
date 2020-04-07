@@ -22,7 +22,7 @@ void UI::Menu(){
 		cout << "1.Add medicine." << endl;
 		cout << "2.Delete medicine." << endl;
 		cout << "3.Edit medicine price." << endl;
-
+		cout << "4.group Medikament by price" << endl;
 		
 		cin >> choice;
 
