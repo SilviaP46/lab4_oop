@@ -80,6 +80,17 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m) {
 
 			break;
 			system("PAUSE");
+
+
+		case 4:
+			cout << "Medicine?";
+			cin >> name;
+			cout << "Price?";
+			cin >> price;
+			break;
+		case 5:
+			//ne trebuie un fisier de ex medicamente.txt,deoarece am functie de undo si redo,care cred ca necesita un fisier
+			
 		}
 	}
 }
