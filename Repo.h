@@ -21,6 +21,7 @@ public:
 	bool add_Medikament(Medikament m);
 	void delete_Medikament(string name, float concentration);
 	void update_Medikament(string name, float concentration,int p);
+	void Search();
 	void Group();
 	void RUndo();
 	void Undo();

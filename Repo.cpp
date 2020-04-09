@@ -4,6 +4,9 @@
 #include <cstring>
 #include <iostream>
 #include <string>
+#include<algorithm>
+#include<sstream>
+
 using namespace std;
 
 
@@ -41,6 +44,27 @@ void Repo::update_Medikament(string name, float concentration,int p) {
 	}
 }
 
+void Repo::Search()//search a medicine by concentration,if it is smaller then
+{
+	int x;
+	cout << "Show the Concentration for search";
+	cin >> x;
+	Medikament temp;
+	int ok = 0;
+	ifstream in("medicament.txt", ios::in);
+	while (in >> temp.get_Name >> temp.get_Concentration >> temp.get_Price >> temp.get_Quantity)//read one line
+		if (in >> temp.get_Concentration)
+		{
+			ok = 1;
+			cout << temp.get_Name() << " " << temp.get_Concentration() << " " << temp.get_Price() << " " << temp.get_Quantity() << " \n";
+		}
+	if (ok == 0)
+	{
+		cout << "There is no medicine by concentration!";
+	}
+}
+
+
 
 void Repo::Group()//group Medikament by price
 {
@@ -56,8 +80,8 @@ void Repo::Group()//group Medikament by price
 	int k = 0;
 	for (const auto& it : v)
 	{
-		name.push_back(it.get_Name);
-		price.push_back(it.get_Price);
+		name.push_back(it.get_Name());
+		price.push_back(it.get_Price());
 		k++;
 	}
 	for (int i = 0; i < k - 1; i++)
