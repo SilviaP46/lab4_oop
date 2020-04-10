@@ -9,17 +9,12 @@ using namespace std;
 
 Controller::Controller(){}
 
-void Controller::ui_menu(int choice, Repo* r, Medikament m)
-{
+void Controller::ui_menu(int choice, Repo* r, Medikament m){
 
 	Medikament* med;
 	int quantity, op = choice, price_reduc;
 	float concentration, price;
-	string name;
-	
-
-
-	
+	string name,s;
 	
 	switch (op) {
 
@@ -41,12 +36,13 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m)
 		cin >> concentration;
 
 		med = new Medikament(quantity, concentration, price, name);
-		if (r->add_Medikament(*med) == false)
+		if (r->add_Medikament(*med) == true)
 		{
 			for (int i = 0; i < r->size_medicine(); i++)
 				if (r->medicine.at(i).get_Name() == name && r->medicine.at(i).get_Concentration() == concentration)
 				{
 					r->medicine.at(i).set_Quantity(quantity);
+					r->medicine.at(i).print();
 					break;
 				}
 
@@ -79,14 +75,25 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m)
 		cin >> name;
 		cout << "Concentration?";
 		cin >> concentration;
-		cout << "Enter reduction price.";
+		cout << "Enter reduction price:";
 		cin >> price_reduc;
-		r->update_Medikament(name, concentration, price_reduc);
+		r->update_Medikament_Price(name, concentration, price_reduc);
 
-		break;
 		system("PAUSE");
+		break;
+
 
 	case 4:
+		cout << "Enter the string you want to sort by."<<endl;
+		cin >> s;
+		cout << "The drugs that contain " << s << " are:" << endl;
+		r->sort_by_string(m, s);
+
+		system("PAUSE");
+		break;
+	
+	/*
+	case 5:
 		cout << "What concentration";
 		cin >> concentration;
 		cout << "medicine";
@@ -94,7 +101,7 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m)
 		break;
 		system("PAUSE");
 				
-	case 5:
+	case 6:
 		cout << "Medicine?";
 		cin >> name;
 		cout << "Price?";
@@ -102,9 +109,8 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m)
 		break;
 		system("PAUSE");
 	
-
+	*/
 	}
-
 
 
 	

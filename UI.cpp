@@ -22,9 +22,11 @@ void UI::Menu(){
 		cout << "1.Add medicine." << endl;
 		cout << "2.Delete medicine." << endl;
 		cout << "3.Edit medicine price." << endl;
-		cout << "4.Search medicine by concentration"<<endl;
-		cout << "5.group Medikament by price" << endl;
-		cout << "6.Undo/Redo" << endl;
+		cout << "4.Sort medicine which contains given string." << endl;
+		cout << "5.Search medicine by concentration."<<endl;
+		cout << "6.Group medicine by price." << endl;
+		cout << "7.Undo/Redo" << endl;
+		cout << "Your choice:";
 		cin >> choice;
 
 		c.ui_menu(choice, &r, m);

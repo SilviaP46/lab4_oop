@@ -4,45 +4,87 @@
 #include <cstring>
 #include <iostream>
 #include <string>
-#include<algorithm>
-#include<sstream>
+#include <algorithm>
+#include <sstream>
 
 using namespace std;
-
-
 
 Repo::Repo() {}
 
 bool Repo::add_Medikament(Medikament m) {
 	for (int i = 0; i < medicine.size(); i++) {
-		if (medicine.at(i).get_Name() == m.get_Name())
-			return false;
+		if (medicine.at(i).get_Name() == m.get_Name() && medicine.at(i).get_Concentration() == m.get_Concentration())
+		{
+			return true;
+			break;
+		}
+			
 	}
 	medicine.push_back(m);
-	return true;
-
-	cout <<"ok";
+	return false;
 }
 
 void Repo::delete_Medikament(string name,float concentration) {
 	for (int i = 0; i < medicine.size(); i++) {
 		if (medicine.at(i).get_Name() == name && medicine.at(i).get_Concentration()==concentration) {
 			medicine.erase(medicine.begin() + i);
-			cout << "Medicine deleted!";
+			cout << "Medicine deleted!"<<endl;
 			return;
 		}
 	}
-	cout << "Medicine does not exist.";
+	cout << "Medicine does not exist."<<endl;
 }
 
 
-void Repo::update_Medikament(string name, float concentration,int p) {
+void Repo::update_Medikament_Price(string name, float concentration,int p) {
 	for (int i = 0; i < medicine.size(); i++) {
 		if (medicine.at(i).get_Name() == name && medicine.at(i).get_Concentration()==concentration) {
+			cout << "Old price:" << medicine.at(i).get_Price() << endl;
 			medicine.at(i).set_Price(medicine.at(i).get_Price() - p);
+			cout <<"New price:"<<medicine.at(i).get_Price()<<endl;
 		}
 	}
 }
+
+
+
+void  Repo::sort_by_string(Medikament m, string s) {
+
+	string str = s;
+
+	auto compareFunction = [](Medikament a, Medikament b) {
+
+		return a.get_Name() < b.get_Name(); 
+	};
+
+	sort(medicine.begin(), medicine.end(), compareFunction);
+
+	if (s == "ok")
+	{
+		for (int i = 0; i < medicine.size(); i++)
+			medicine[i].print();
+	}
+
+	else {
+
+		vector<Medikament> aux;
+
+		for (int i = 0;i < medicine.size();i++)
+		{
+			if (medicine.at(i).get_Name().find(s) != string::npos) //until end of string
+				aux.push_back(medicine.at(i));
+		}
+
+		for (int i = 0; i < aux.size(); i++)
+			aux[i].print();
+
+	}
+	}
+
+
+
+
+/*
 
 void Repo::Search()//search a medicine by concentration,if it is smaller then
 {
@@ -141,5 +183,5 @@ void Repo::Undo()
 	c = {};
 }
 
-
+*/
 

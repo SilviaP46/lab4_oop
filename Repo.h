@@ -20,11 +20,13 @@ public:
 	int size_medicine() { return medicine.size(); }
 	bool add_Medikament(Medikament m);
 	void delete_Medikament(string name, float concentration);
-	void update_Medikament(string name, float concentration,int p);
-	void Search();
-	void Group();
-	void RUndo();
-	void Undo();
+	void update_Medikament_Price(string name, float concentration,int p);
+	void sort_by_string(Medikament m, string s);
+
+	//void Search();
+	//void Group();
+	//void RUndo();
+	//void Undo();
 	
 
 };
