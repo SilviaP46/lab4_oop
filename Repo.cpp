@@ -84,22 +84,17 @@ void  Repo::sort_by_string(Medikament m, string s) {
 
 
 
-/*
 
-void Repo::Search()//search a medicine by concentration,if it is smaller then
+void Repo::Search(float c)//search a medicine by concentration,if it is smaller then
 {
-	int x;
-	cout << "Show the Concentration for search";
-	cin >> x;
-	Medikament temp;
+	int x = c;
 	int ok = 0;
-	ifstream in("medicament.txt", ios::in);
-	while (in >> temp.get_Name >> temp.get_Concentration >> temp.get_Price >> temp.get_Quantity)//read one line
-		if (in >> temp.get_Concentration)
-		{
+	for (int i = 0; i < medicine.size(); i++)
+		if (medicine.at(i).get_Concentration() < c) {
+			medicine.at(i).print();
 			ok = 1;
-			cout << temp.get_Name() << " " << temp.get_Concentration() << " " << temp.get_Price() << " " << temp.get_Quantity() << " \n";
 		}
+
 	if (ok == 0)
 	{
 		cout << "There is no medicine by concentration!";
@@ -110,48 +105,33 @@ void Repo::Search()//search a medicine by concentration,if it is smaller then
 
 void Repo::Group()//group Medikament by price
 {
-	
 
-
-	//create 2 vectors and memorize the name and the price of each one
-	Medikament temp;
-	ifstream in("medicament.txt", ios::in);
-	while (in >> temp.get_Name >> temp.get_Concentration >> temp.get_Price >> temp.get_Quantity)
-
-		v.push_back(temp);//create a vector
-	int k = 0;
-	for (const auto& it : v)
+	for (int i = 0; i < medicine.size(); i++) //sortare
 	{
-		name.push_back(it.get_Name());
-		price.push_back(it.get_Price());
-		k++;
-	}
-	for (int i = 0; i < k - 1; i++)
-	{
-		for (int j = 0; j < k; j++)
+		for (int j = 0; j < medicine.size(); j++)
 		{
-			if (price[i] > price[j])
+			if (medicine.at(i).get_Price() > medicine.at(j).get_Price())
 			{
-				int aux = price[i];
-				string aux1 = name[i];
-				price[i] = price[j];
-				price[j] = aux;
-				name[i] = name[j];
-				name[j] = aux1;
+				int aux = medicine.at(i).get_Price();
+				string aux1 = medicine.at(i).get_Name();
+				medicine.at(i).set_Price(medicine.at(j).get_Price());
+				medicine.at(j).set_Price(aux);
+				medicine.at(i).set_Name(medicine.at(j).get_Name());
+				medicine.at(j).set_Name(aux1);
 			}
 		}
 	}
 	//group the elem by price and display them
 	int i = 0;
-	while (i < k)
+	while (i < medicine.size())
 	{
-		cout << "Price: " << price[i] << " - ";
+		cout << "Price: " << medicine.at(i).get_Price() << " - ";
 		int j = i;
-		while (j < k)
+		while (j < medicine.size())
 		{
-			if (price[i] == price[j])
+			if (medicine.at(i).get_Price() == medicine.at(j).get_Price())
 			{
-				cout << name[j] << " ";
+				cout << medicine.at(j).get_Name() << " ";
 				j++;
 			}
 			else
@@ -162,6 +142,7 @@ void Repo::Group()//group Medikament by price
 	}
 }
 
+/*
 void Repo::RUndo()//help function for Undo
 {
 	Medikament temp;

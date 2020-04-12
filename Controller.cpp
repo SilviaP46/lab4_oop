@@ -92,24 +92,20 @@ void Controller::ui_menu(int choice, Repo* r, Medikament m){
 		system("PAUSE");
 		break;
 	
-	/*
 	case 5:
-		cout << "What concentration";
+		cout << "What concentration: ";
 		cin >> concentration;
-		cout << "medicine";
-		cin >> name;
-		break;
+		r->Search(concentration);
+
 		system("PAUSE");
-				
+		break;
+
+
 	case 6:
-		cout << "Medicine?";
-		cin >> name;
-		cout << "Price?";
-		cin >> price;
-		break;
+		r->Group();
+
 		system("PAUSE");
-	
-	*/
+		break;
 	}
 
 
